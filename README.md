@@ -1,7 +1,7 @@
 # Robert Lafore - Data Structures & Algorithms in Java - Solutions
 Solutions to the programming projects found at the end of each chapter of Robert Lafore's Introduction to Data Structures & Algorithms in Java textbook
 
-Seeking a review and more thorough understanding of fundamental data structures and algorithms, I have taken it upon myself to complete all of the the programming projects found in Robert Lafore's Data structures & Algorithms in Java. The chapters of the book are arranged as such:
+Seeking a review and more thorough understanding of fundamental data structures and algorithms, I have taken it upon myself to complete all of the the programming projects found in Robert Lafore's Data structures & Algorithms in Java (https://www.amazon.com/Data-Structures-Algorithms-Java-2nd/dp/0672324539). The chapters of the book are arranged as such:
 
 1. Overview (no projects) 
 2. Arrays 
