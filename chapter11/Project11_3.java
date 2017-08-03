@@ -13,16 +13,17 @@ public class Project11_3 {
 		DataItem aDataItem;
 		int aKey, size, n, keysPerCell;
 
-		System.out.println("Enter size of hash table: ");
+		System.out.print("Enter size of hash table: ");
 		size = getInt();
 
-		System.out.println("Enter initial number of items:");
+		System.out.print("Enter initial number of items: ");
 		n = getInt();
+		System.out.println();
 
 		keysPerCell = 10;
 
 		// Make table
-		HashTable theHashTable = new HashTable(size);
+		HashTable2 theHashTable = new HashTable2(size);
 
 		// Insert data
 		for (int i = 0; i < n; i++) {
@@ -88,54 +89,63 @@ class HashTable2 {
 	private DataItem[] hashArray;
 	private int arraySize;
 	private DataItem nonItem; // for deleted items
+	private int foldNumber; // for hashing via digit-folding
 
 	public HashTable2(int size) {
 		arraySize = size;
 		hashArray = new DataItem[arraySize];
 		nonItem = new DataItem(-1); // deleted items have key of -1
+		setFoldNumber(arraySize);
 	}
 
+	// Added for Project11_3
+	// Entries will be broken into groups of 1 for arrays less than 100
+	public void setFoldNumber(int arraySize) {
+		foldNumber = 10;
+
+		while (arraySize >= 100) {
+			arraySize /= 10;
+			foldNumber *= 10;
+		}
+	}
+
+	// Modified for Project11_3
 	public int hashFunction(int key) {
-		return key % arraySize;
+		int foldedKey = 0;
+
+		while (key > 0) {
+			foldedKey += key % foldNumber;
+			key /= foldNumber;
+		}
+		return foldedKey % arraySize;
 	}
 
-	// Modified for Project11_1
 	public void insert(DataItem item) { // assumes table isn't full
 		int key = item.getKey();
 		int hashValue = hashFunction(key);
-		int probeCount = 1;
 
 		while (hashArray[hashValue] != null && hashArray[hashValue].getKey() != -1) {
-			System.out.println(probeCount);
-			hashValue += probeCount * probeCount;
-			probeCount++;
-
+			++hashValue;
 			hashValue %= arraySize;
 		}
 		hashArray[hashValue] = item;
 	}
 
-	// Modified for Project11_1
 	public DataItem find(int key) {
 		int hashValue = hashFunction(key);
-		int probeCount = 1;
 
 		while (hashArray[hashValue] != null) {
 			if (hashArray[hashValue].getKey() == key) {
 				return hashArray[hashValue];
 			}
-			hashValue += probeCount * probeCount;
-			probeCount++;
-
+			++hashValue;
 			hashValue %= arraySize;
 		}
 		return null;
 	}
 
-	// Modified for Project11_1
 	public DataItem delete(int key) {
 		int hashValue = hashFunction(key);
-		int probeCount = 1;
 
 		while (hashArray[hashValue] != null) {
 			if (hashArray[hashValue].getKey() == key) {
@@ -143,9 +153,7 @@ class HashTable2 {
 				hashArray[hashValue] = nonItem;
 				return temp;
 			}
-			hashValue += probeCount * probeCount;
-			probeCount++;
-
+			++hashValue;
 			hashValue %= arraySize;
 		}
 		return null;
@@ -161,6 +169,7 @@ class HashTable2 {
 				System.out.print("** ");
 			}
 		}
+		System.out.println();
 		System.out.println();
 	}
 }
