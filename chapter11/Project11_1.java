@@ -106,7 +106,6 @@ class HashTable {
 		int probeCount = 1;
 
 		while (hashArray[hashValue] != null && hashArray[hashValue].getKey() != -1) {
-			System.out.println(probeCount);
 			hashValue += probeCount * probeCount;
 			probeCount++;
 
