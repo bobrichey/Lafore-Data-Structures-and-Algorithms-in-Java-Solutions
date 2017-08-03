@@ -1,5 +1,9 @@
 /* Directions:
- * Modify the hash.java program (Listing 11.1) to use quadratic probing.
+ * Write a hash function to implement a digit-folding approach in the hash 
+ * function (as described in the “Hash Functions” section of this chapter). 
+ * Your program should work for any array size and any key length. Use linear 
+ * probing. Accessing a group of digits in a number may be easier than you 
+ * think. Does it matter if the array size is not a multiple of 10?
  */
 
 package chapter11;
