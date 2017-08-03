@@ -8,7 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Project11_1 {
+public class Project11_3 {
 	public static void main(String[] args) throws IOException {
 		DataItem aDataItem;
 		int aKey, size, n, keysPerCell;
@@ -84,12 +84,12 @@ public class Project11_1 {
 	}
 }
 
-class HashTable {
+class HashTable2 {
 	private DataItem[] hashArray;
 	private int arraySize;
 	private DataItem nonItem; // for deleted items
 
-	public HashTable(int size) {
+	public HashTable2(int size) {
 		arraySize = size;
 		hashArray = new DataItem[arraySize];
 		nonItem = new DataItem(-1); // deleted items have key of -1
