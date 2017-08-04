@@ -18,11 +18,12 @@ public class Project11_4 {
 		DataItem aDataItem;
 		int aKey, size, n, keysPerCell;
 
-		System.out.println("Enter size of hash table: ");
+		System.out.print("Enter size of hash table: ");
 		size = getInt();
 
-		System.out.println("Enter initial number of items:");
+		System.out.print("Enter initial number of items: ");
 		n = getInt();
+		System.out.println();
 
 		keysPerCell = 10;
 
